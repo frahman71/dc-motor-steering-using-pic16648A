@@ -1,12 +1,12 @@
-;**************************************************************************
-;*           Fredrik Åhman   High-Q KIT  K8048/VM111 Motor speed controller    *
-;*           CPU: 16F648A,  Capacity 4K instructions, 256 internal flash  mem      *
-;*                                                                                                            *
-;**************************************************************************
-;*          Hardw. Rev: P8048'1          Softw. Rev:  1.00                                    *
-;*          OSC.......: XT 4MHz Max.     POWER.....:  5V DC                                *
-;*												  *
-;**************************************************************************
+;************************************************************************************
+;*           Fredrik Åhman   High-Q KIT  K8048/VM111 Motor speed controller    		*
+;*           CPU: 16F648A,  Capacity 4K instructions, 256 internal flash  mem       *
+;*                                                                                  *
+;************************************************************************************
+;*          Hardw. Rev: P8048'1          Softw. Rev:  1.00                          *
+;*          OSC.......: XT 4MHz Max.     POWER.....:  5V DC                         *
+;*												  									*
+;************************************************************************************
 
 ;----- Temporary registers------------------------------------------------------
 
@@ -101,9 +101,9 @@ __CONFIG	_BODEN_ON & _CP_OFF & _DATA_CP_OFF & _PWRTE_ON & _WDT_OFF & _LVP_OFF & 
 ;       Variable Definitions
 ;==========================================================================
 
-TIMER1		EQU	H'20'		;Used in delay routine
-TIMER2		EQU	H'21'		; "	"	"	
-PATERN		EQU	H'22'		;Pattern data for effect's
+TIMER1			EQU	H'20'		;Used in delay routine
+TIMER2			EQU	H'21'		; "	"	"	
+PATERN			EQU	H'22'		;Pattern data for effect's
 PORTA_WORD_TO_SERIAL	EQU	H'23'
 PORTA_BITCOUNT	EQU H'24'
 INPUT_REGISTER	EQU	H'25'
@@ -187,9 +187,6 @@ ORG     0x0004               ; Interrupt vector address
 				CALL 	PROCESS_TIMER2_INTERRUPT
 				BTFSC   PORTB,0; Check if external interrupt (knob or key pressed) was triggered
 				CALL 	PROCESS_EXT_INTERRUPT
-				;MOVF	STEER_SIGNAL,W
-			    ;MOVWF	TIMER2
-				;CALL	MOTOR_DELAY
 				BCF		PORTB,5
 				MOVLW	B'11010000' ; Re-enable external and peripheral interrupts 
 				MOVWF	INTCON
@@ -219,7 +216,6 @@ PROCESS_EXT_INTERRUPT:
 				BTFSC   PORTA,7
 				CALL    DEC_MOTOR_SPEED		
 				CALL	PRINT_SET_RPM
-				;CALL	MEDIUM_DELAY
 				CALL 	TMR2_RESET
 				RETURN
 
@@ -243,8 +239,6 @@ PRINT_SET_RPM:
 				MOVWF   INPUT_HEX_NUM
 				CALL 	CONVERT_HEX_TO_DEC
 				CALL    PRINT_SET
-				;CALL	PRINT_SPACE
-                ;CALL    PRINT_RPM
 				CALL	PRINT_KOLON
 				CALL	PRINT_DEC_VAL
 				CALL 	PRINT_00
