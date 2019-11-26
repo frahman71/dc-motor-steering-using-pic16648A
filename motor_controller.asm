@@ -370,8 +370,6 @@ DISPLAY_ROTOR_RPM:
 				CALL 	CONVERT_HEX_TO_DEC
 			
 			    CALL 	PRINT_ACT
-				;CALL	PRINT_SPACE
-                ;CALL    PRINT_RPM
 				CALL	PRINT_KOLON
 			    CALL	PRINT_DEC_VAL
 			
@@ -869,12 +867,12 @@ BYPASS_CLR_PORTA
 ;==============================================================================================================================				
 LETTER_TEST:
 				MOVLW	B'01001000'	; Write the letter 'H'
-				MOVWF	PORTA_WORD_TO_SERIAL ;Testa kall till seriell dataöverföring
+				MOVWF	PORTA_WORD_TO_SERIAL ; Move to temp registry PORTA_WORD_TO_SERIAL for sending the letter as bit sequence
 				BCF		PORTA,3 ; Set address bit shift register one or two
 				CALL 	PAR_TO_SERIAL_PORTA
 				CALL	LCD_CHR
 				MOVLW	B'01001001'	; Write the letter 'I'
-				MOVWF	PORTA_WORD_TO_SERIAL ;Testa kall till seriell dataöverföring
+				MOVWF	PORTA_WORD_TO_SERIAL ; Move to temp registry PORTA_WORD_TO_SERIAL for sending the letter as bit sequence
 				BCF		PORTA,3 ; Set address bit shift register one or two
 				CALL 	PAR_TO_SERIAL_PORTA
 				CALL	LCD_CHR
