@@ -1,4 +1,4 @@
-# dc-motor-steering-using-pic16648A
+# dc-motor-steering-using-pic16F648A
 Assembler program showing code for a DC motor steering with a PI-regulator algorithm and rpm conversion that are sent to a LCD-display showing the RPM in real time. The rpm setting can be adjusted through a rotary pulse encoder. This example application is a typical example of what kind of fun and powerful embedded hardware you can create with the 4k 16F648A processor.
 
 I shortly will publish the pin configuration for you if you like to test this on an experimental board.
