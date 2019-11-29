@@ -9,5 +9,5 @@ The processor spec can be read here: http://ww1.microchip.com/downloads/en/Devic
 
 And the display spec can be read from here: https://www.sparkfun.com/datasheets/LCD/HD44780.pdf
 
-image:: motor_steering_breadboard.jpg
+![Scheme]motor_steering_breadboard.JPG
 
